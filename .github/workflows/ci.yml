@@ -1,0 +1,25 @@
+
+name: CI Build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build services
+        run: |
+          for d in user-service project-service finance-service notification-service auth-service; do
+            (cd $d && ./gradlew clean build -x test) || exit 1
+          done
+      - name: Build Docker images (example)
+        run: |
+          docker build -t insight/user-service:latest ./user-service
+          docker build -t insight/project-service:latest ./project-service
+          docker build -t insight/finance-service:latest ./finance-service
+          docker build -t insight/notification-service:latest ./notification-service
+          docker build -t insight/auth-service:latest ./auth-service

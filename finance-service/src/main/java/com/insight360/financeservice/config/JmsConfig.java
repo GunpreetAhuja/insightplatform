@@ -17,6 +17,7 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 @EnableJms
 public class JmsConfig {
+
     public static final String INVOICE_QUEUE = "invoice.queue";
     public static final String NOTIFICATION_TOPIC = "notification.topic";
 
@@ -37,10 +38,14 @@ public class JmsConfig {
     }
 
     @Bean
-    public Queue invoiceQueue() { return new ActiveMQQueue(INVOICE_QUEUE); }
+    public Queue invoiceQueue() {
+        return new ActiveMQQueue(INVOICE_QUEUE);
+    }
 
     @Bean
-    public Topic notificationTopic() { return new ActiveMQTopic(NOTIFICATION_TOPIC); }
+    public Topic notificationTopic() {
+        return new ActiveMQTopic(NOTIFICATION_TOPIC);
+    }
 
     @Bean
     public DefaultJmsListenerContainerFactory queueListenerFactory(ConnectionFactory connectionFactory) {
@@ -61,8 +66,16 @@ public class JmsConfig {
     }
 
     @Bean
-    public JmsTemplate queueJmsTemplate(ConnectionFactory connectionFactory) { JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory); jmsTemplate.setPubSubDomain(false); return jmsTemplate; }
+    public JmsTemplate queueJmsTemplate(ConnectionFactory connectionFactory) {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
+        jmsTemplate.setPubSubDomain(false);
+        return jmsTemplate;
+    }
 
     @Bean
-    public JmsTemplate topicJmsTemplate(ConnectionFactory connectionFactory) { JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory); jmsTemplate.setPubSubDomain(true); return jmsTemplate; }
+    public JmsTemplate topicJmsTemplate(ConnectionFactory connectionFactory) {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
+        jmsTemplate.setPubSubDomain(true);
+        return jmsTemplate;
+    }
 }

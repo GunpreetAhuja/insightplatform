@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8086
 
 spring:
   application:
-    name: user-service
+    name: auth-service
   activemq:
     broker-url: ${ACTIVEMQ_URL:tcp://localhost:61616}
     user: ${ACTIVEMQ_USER:admin}

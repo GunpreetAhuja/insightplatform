@@ -1,0 +1,30 @@
+{
+  "image": {
+    "repository": "insight",
+    "tag": "latest",
+    "pullPolicy": "IfNotPresent"
+  },
+  "replicaCount": 1,
+  "services": {
+    "user-service": {
+      "port": 8082,
+      "replicas": 1
+    },
+    "project-service": {
+      "port": 8083,
+      "replicas": 1
+    },
+    "finance-service": {
+      "port": 8084,
+      "replicas": 1
+    },
+    "notification-service": {
+      "port": 8085,
+      "replicas": 1
+    },
+    "auth-service": {
+      "port": 8086,
+      "replicas": 1
+    }
+  }
+}

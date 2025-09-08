@@ -1,0 +1,7 @@
+
+apiVersion: v2
+name: insight360
+description: Insight360 Helm chart (monorepo)
+type: application
+version: 0.4.0
+appVersion: "0.1.0"

@@ -1,0 +1,15 @@
+{
+  "title": "Insight360 Dashboard",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Invoices",
+      "id": 1
+    },
+    {
+      "type": "graph",
+      "title": "Queue Depth",
+      "id": 2
+    }
+  ]
+}

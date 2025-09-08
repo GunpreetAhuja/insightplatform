@@ -1,5 +1,6 @@
 server:
   port: 8085
+
 spring:
   application:
     name: notification-service
@@ -7,3 +8,17 @@ spring:
     broker-url: ${ACTIVEMQ_URL:tcp://localhost:61616}
     user: ${ACTIVEMQ_USER:admin}
     password: ${ACTIVEMQ_PASSWORD:admin}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+logging:
+  level:
+    root: INFO
